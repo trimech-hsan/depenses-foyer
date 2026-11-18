@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --accent: #0f766e;
+  --accent-contrast: #ffffff;
+  --danger: #b91c1c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b1220;
+    --surface: #111827;
+    --foreground: #e5e7eb;
+    --muted: #94a3b8;
+    --border: #1f2937;
+    --accent: #2dd4bf;
+    --accent-contrast: #042f2e;
+    --danger: #f87171;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-danger: var(--danger);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-border bg-surface p-4;
+  }
+  .label {
+    @apply mb-1 block text-sm font-medium text-muted;
+  }
+  .input {
+    @apply w-full rounded-lg border border-border bg-surface px-3 py-2 text-base text-foreground outline-none focus:border-accent;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2 font-semibold text-accent-contrast disabled:opacity-60;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-lg border border-border px-3 py-1.5 text-sm text-foreground;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center rounded-lg px-2 py-1 text-sm text-danger;
+  }
+}
